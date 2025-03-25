@@ -16,7 +16,7 @@ function PostWithCommetsPage() {
       {!appContext?.post ? (
         <Skeleton className="h-20" />
       ) : (
-        <PostCard post={appContext.post} isCompact={false} isCached={false} />
+        <PostCard post={appContext.post} isCompact={false} />
       )}
       <h2 className="font-medium">Comments</h2>
       <div className="flex gap-3 flex-col">

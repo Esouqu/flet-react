@@ -5,22 +5,20 @@ import { AppContext } from "@/lib/contexts/AppContext";
 
 interface Props {
   post: IPost & { user?: IUser };
-  isCached: boolean;
   isCompact?: boolean;
 }
 
-function PostCard({ post, isCached, isCompact = true }: Props) {
+function PostCard({ post, isCompact = true }: Props) {
   const appContext = useContext(AppContext);
 
-  console.log(isCompact)
   return (
     <a
       href="#"
       className="group w-full cursor-default"
       onClick={() => appContext?.setPost(post)}
-      data-is-cached={isCached} data-is-compact={isCompact}
+      data-is-compact={isCompact}
     >
-      <Card className="group-data-[is-cached=true]:opacity-50 group-data-[is-cached=true]:hover:opacity-100 group-data-[is-compact=true]:hover:outline-2 group-data-[is-compact=true]:hover:outline-white transition duration-200" >
+      <Card className="group-data-[is-compact=true]:hover:outline-2 group-data-[is-compact=true]:hover:outline-white transition duration-200" >
         <CardHeader>
           <CardTitle className="flex flex-col overflow-hidden text-2xl group-data-[is-compact=true]:text-base ">
             <p className="text-sm m-0 font-normal">{post.user?.username || ''}</p>

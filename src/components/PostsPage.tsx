@@ -1,4 +1,3 @@
-import { useQueryClient } from "@tanstack/react-query"
 import PostCard from "./PostCard"
 import { Skeleton } from "./ui/skeleton"
 import usePostsWithUsers from "@/lib/hooks/usePostsWithUsers"
@@ -7,7 +6,6 @@ import { useContext } from "react";
 import PostWithCommetsPage from "./PostWithCommetsPage";
 
 function PostsPage() {
-  const queryClient = useQueryClient();
   const appContext = useContext(AppContext);
   const { posts, error, isLoading } = usePostsWithUsers();
 
@@ -26,7 +24,7 @@ function PostsPage() {
       ) : (
         <>
           {posts.map((post) => (
-            <PostCard key={post.id} post={post} isCached={!!queryClient.getQueryData(['post', post.id])} />
+            <PostCard key={post.id} post={post} />
           ))}
         </>
       )}
